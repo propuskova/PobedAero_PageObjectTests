@@ -1,3 +1,6 @@
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
 import selenide.*;
 
 import com.codeborne.selenide.Configuration;
@@ -6,6 +9,8 @@ import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Selenide.*;
 
+@Epic("UI-тесты для сайта Победа")
+//@Description("Набор тестов для проверки: главной страницы, блока поиска билетов, управления бронированием на сайте Победа")
 public class PobedaSelenideTests {
 
     MainPage mainPage;
@@ -26,6 +31,8 @@ public class PobedaSelenideTests {
 
     // Задание 1 — проверка выпадающего меню
     @Test
+    @Feature("Главная страница")
+    @Description("Проверка отображения меню Информация и текста для пунктов меню")
     void testInfoMenuPopup() {
         mainPage.getTitle().equals("Авиакомпания «Победа» - купить авиабилеты онлайн, дешёвые билеты на самолёт, прямые и трансферные рейсы с пересадками");
         mainPage.isLogoVisible();
@@ -38,6 +45,8 @@ public class PobedaSelenideTests {
 
     // Задание 2 — проверка формы поиска рейса
     @Test
+    @Feature("Блок поиска")
+    @Description("Проверка отображения полей и валидации формы поиска при отсутствии даты вылета")
     void testFlightSearchValidation() {
         mainPage.getTitle().equals("Авиакомпания «Победа» - купить авиабилеты онлайн, дешёвые билеты на самолёт, прямые и трансферные рейсы с пересадками");
         mainPage.isLogoVisible();
@@ -51,6 +60,8 @@ public class PobedaSelenideTests {
 
     // Задание 3 — проверка ошибки при несуществующей брони
     @Test
+    @Feature("Управление бронированием")
+    @Description("Проверка отображения полей и сообщения об ошибке при вводе некорректных даттых бронирования")
     void testManageBookingError() {
         mainPage.getTitle().equals("Авиакомпания «Победа» - купить авиабилеты онлайн, дешёвые билеты на самолёт, прямые и трансферные рейсы с пересадками");
         mainPage.isLogoVisible();
